@@ -1,0 +1,116 @@
+#include <iostream>
+using namespace std;
+
+int swap(int arr[], int size)
+{	
+	int i, temp;
+	for (i = 1; i < size; i += 2)
+	{
+		temp = arr[i];
+		arr[i] = arr[i - 1];
+		arr[i - 1] = temp;
+	}
+	cout << "\nBelow Are The Elements AFTER swapping: ";
+	for (i = 0; i < size; i++)
+	{
+		cout << arr[i] << ",";
+	}
+	return 0;
+}
+void reverse(int arr[], int size)
+{
+	cout<<"\n This is the Reverse of given Array Elements \n" << endl;
+	int start = 0;
+	int end = size - 1;
+	while (start <= end)
+	{
+		swap(arr[start], arr[end]);
+		start++;
+		end--;
+	}
+	for (int i = 0; i < size; i++)
+	{
+		cout << arr[i]<<",";
+	}
+
+}
+int getMin(int arr[], int size) {
+
+	int min = INT_MAX;
+
+	for (int i = 0; i < size; i++) {
+		if(arr[i] < min)
+		{
+		    min = arr[i];
+		}
+	}
+
+	//returning min value
+	return min;
+}
+int getMax(int arr[], int size)
+{
+	int max = INT_MIN;
+	for (int i = 0; i < size; i++)
+	{
+		if (arr[i] > max)
+		{
+			max = arr[i];
+		}
+	}
+	// returning max vaue
+	return max;
+}
+bool searchElement(int arr[], int size, int key)
+{	
+	for (int i = 0; i < size; i++)
+	{
+		if (arr[i] == key)
+		{
+			return 1;
+		}
+	}
+	return 0;
+}
+
+int main()
+{
+	 int arr[100], i, temp, size;
+	cout << "Enter Any Size :";
+	cin >> size;
+	cout << "Enter Elements in to array: ";
+	for (i = 0; i < size; i++)
+	{
+		cin >> arr[i];
+	}
+	cout << "\nBelow Are The Elements Before swapping:\n "; 
+	for (i = 0; i < size; i++)
+	{
+		cout << arr[i]<<",";
+	}
+	int key;
+	cout << "\n Enter The Element for search :\n";
+	cin >> key;
+
+	bool found = searchElement(arr, size, key);
+	if (found) 
+	{
+		cout << "The Element is PRESENT in given array" << endl;
+	}
+	else
+	{
+		cout << "The Element is NOT PRESENT in given array" << endl;
+	}
+
+	swap(arr, size);
+	reverse(arr, size);
+	cout << " \n Maximum value is " << getMax(arr, size) << endl;
+	cout << " \n Minimum value is " << getMin(arr, size) << endl;
+
+
+
+
+
+	return 0;
+}
+
