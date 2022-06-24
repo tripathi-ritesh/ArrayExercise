@@ -1,116 +1,159 @@
 #include <iostream>
 using namespace std;
 
-int swap(int arr[], int size)
+int increasingTriangle(int n)
 {	
-	int i, temp;
-	for (i = 1; i < size; i += 2)
+	cout << "This Is an Increasing star pattern \n";
+	for (int i = 1; i <= n; i++)
 	{
-		temp = arr[i];
-		arr[i] = arr[i - 1];
-		arr[i - 1] = temp;
-	}
-	cout << "\nBelow Are The Elements AFTER swapping: ";
-	for (i = 0; i < size; i++)
-	{
-		cout << arr[i] << ",";
+		for (int j = 1; j <= i; j++)
+		{
+			cout << "* ";
+		}
+		cout << "\n";
 	}
 	return 0;
 }
-void reverse(int arr[], int size)
-{
-	cout<<"\n This is the Reverse of given Array Elements \n" << endl;
-	int start = 0;
-	int end = size - 1;
-	while (start <= end)
-	{
-		swap(arr[start], arr[end]);
-		start++;
-		end--;
-	}
-	for (int i = 0; i < size; i++)
-	{
-		cout << arr[i]<<",";
-	}
-
-}
-int getMin(int arr[], int size) {
-
-	int min = INT_MAX;
-
-	for (int i = 0; i < size; i++) {
-		if(arr[i] < min)
-		{
-		    min = arr[i];
-		}
-	}
-
-	//returning min value
-	return min;
-}
-int getMax(int arr[], int size)
-{
-	int max = INT_MIN;
-	for (int i = 0; i < size; i++)
-	{
-		if (arr[i] > max)
-		{
-			max = arr[i];
-		}
-	}
-	// returning max vaue
-	return max;
-}
-bool searchElement(int arr[], int size, int key)
+int decreasingTriangle(int n)
 {	
-	for (int i = 0; i < size; i++)
+	cout << "This Is an Decreasing star pattern \n";
+	for (int i = 1; i <= n; i++)
 	{
-		if (arr[i] == key)
+		for (int j = i; j <= n; j++)
 		{
-			return 1;
+			cout << "* ";
 		}
+		cout << "\n";
 	}
 	return 0;
 }
-
-int main()
+int rightTriangle(int n)
 {
-	 int arr[100], i, temp, size;
-	cout << "Enter Any Size :";
-	cin >> size;
-	cout << "Enter Elements in to array: ";
-	for (i = 0; i < size; i++)
+	cout << "This Is a Right Triangle star pattern \n";
+	for (int i = 1; i <= n; i++)
 	{
-		cin >> arr[i];
+		for (int j = i; j <= n; j++)
+		{
+			cout << "  ";
+		}
+		for (int j = 1; j <= i; j++)
+		{
+			cout << "* ";
+		}
+
+		cout << "\n";
 	}
-	cout << "\nBelow Are The Elements Before swapping:\n "; 
-	for (i = 0; i < size; i++)
+	return 0;
+}
+int leftTriangle(int n)
+{	
+	cout << "This is Left Triangle Star Pattern" << endl;
+	for (int i = 1; i <= n; i++)
 	{
-		cout << arr[i]<<",";
-	}
-	int key;
-	cout << "\n Enter The Element for search :\n";
-	cin >> key;
+		for (int j = 1; j <= i; j++)
+		{
+			cout << "  ";
+		}
+		for (int j = i; j <= n; j++)
+		{
+			cout << "* ";
+		}
 
-	bool found = searchElement(arr, size, key);
-	if (found) 
+		cout << "\n";
+	}
+	return 0;
+}
+int hillPattern(int n)
+{	
+	cout << "This Is The Hill Star Pattern" << endl;
+	for (int i = 1; i <= n; i++)
 	{
-		cout << "The Element is PRESENT in given array" << endl;
+		for (int j = i; j <= n; j++) //decreasing Space
+		{
+			cout << "  ";
+		}
+		for (int j = 1; j < i; j++)  //increasing Star
+		{
+			cout << "* ";
+		}
+		for (int j = 1; j <= i; j++)  //increasing Star
+		{
+			cout << "* ";
+		}
+		cout << "\n";
 	}
-	else
-	{
-		cout << "The Element is NOT PRESENT in given array" << endl;
-	}
-
-	swap(arr, size);
-	reverse(arr, size);
-	cout << " \n Maximum value is " << getMax(arr, size) << endl;
-	cout << " \n Minimum value is " << getMin(arr, size) << endl;
-
-
-
 
 
 	return 0;
 }
+int reverseHillPattern(int n)
+{	
+	cout << "This is A Reverse Hill Star Pattern" << endl;
+	for (int i = 1; i <= n; i++)
+	{
+		for (int j = 1; j <= i; j++)  //Incrse Space
+		{
+			cout << "  ";
+		}
+		for (int j = i; j < n; j++)		//Decr. Star
+		{
+			cout << "* ";
+		}
+		for (int j = i; j <= n; j++)		//Decrs. Star
+		{
+			cout << "* ";
+		}
+		cout << "\n";
+	}
+	return 0;
+}
+int diamondPattern(int n)
+{
+	cout << "This Is The DIAMOND Star Pattern" << endl;
+	for (int i = 1; i < n; i++)
+	{
+		for (int j = i; j <= n; j++) //decreasing Space
+		{
+			cout << "  ";
+		}
+		for (int j = 1; j < i; j++)  //increasing Star
+		{
+			cout << "* ";
+		}
+		for (int j = 1; j <= i; j++)  //increasing Star
+		{
+			cout << "* ";
+		}
 
+		cout << "\n";
+	}
+	for (int i = 1; i <= n; i++)
+	{
+		for (int j = 1; j <= i; j++)  //Incrse Space
+		{
+			cout << "  ";
+		}
+		for (int j = i; j < n; j++)		//Decr. Star
+		{
+			cout << "* ";
+		}
+		for (int j = i; j <= n; j++)		//Decrs. Star
+		{
+			cout << "* ";
+		}
+		cout << "\n";
+	}
+	return 0;
+}
+int main() 
+{	
+	//increasingTriangle(5);
+	//decreasingTriangle(5);
+	//rightTriangle(5);
+	//leftTriangle(5);
+	//hillPattern(5);
+	//reverseHillPattern(5);
+	diamondPattern(5);
+
+	return 0;
+}
