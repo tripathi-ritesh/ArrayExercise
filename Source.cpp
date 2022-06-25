@@ -146,13 +146,13 @@ int diamondPattern(int n)
 	return 0;
 }
 int main() 
-{	
-	//increasingTriangle(5);
-	//decreasingTriangle(5);
-	//rightTriangle(5);
-	//leftTriangle(5);
-	//hillPattern(5);
-	//reverseHillPattern(5);
+{	cout<<"this is the main function ";
+	increasingTriangle(5);
+	decreasingTriangle(5);
+	rightTriangle(5);
+	leftTriangle(5);
+	hillPattern(5);
+	reverseHillPattern(5);
 	diamondPattern(5);
 
 	return 0;
