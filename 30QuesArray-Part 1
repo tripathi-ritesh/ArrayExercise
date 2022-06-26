@@ -1,0 +1,142 @@
+#include<iostream>
+#include <algorithm>
+using namespace std;
+
+int findLargest(int arr[], int size)
+{
+	int max = INT_MIN;
+	for (int i = 0; i < size; i++)
+	{
+		if (arr[i] > max)
+		{
+			max = arr[i];
+		}
+	}
+	return max;
+}
+int findSmallest(int arr[], int size)
+{
+	int min = INT_MAX;
+	for (int i = 0; i < size; i++)
+	{
+		if (arr[i] < min)
+		{
+			min = arr[i];
+		}
+	}
+	return min;
+}
+void threeLargest(int arr[], int size)
+{
+	int i, first, second, third;
+	third = second = first = INT_MIN;
+	for (i = 0; i < size; i++)
+	{
+		if (arr[i] > first)
+		{
+			third = second;
+			second = first;
+			first = arr[i];
+		}
+		else if (arr[i] > second)
+		{
+			third = second;
+			second = arr[i];
+		}
+		else if (arr[i] > third)
+		{
+			third = arr[i];
+		}
+		
+	}
+	cout << " \nThe Three Largest Elements are:  "
+		<< first << "," << second << "," << third;
+	
+}
+void secondLargest(int arr[], int size)
+{
+	int i, first, second;
+	first = second = INT_MIN;
+	for (i = 0; i < size; i++)
+	{
+		if (arr[i] > first)
+		{
+			second = first;
+			first = arr[i];
+		}
+		else if (arr[i] > second)
+		{
+			second = arr[i];
+		}
+	}
+	if (second == INT_MIN)
+	{
+		cout << "\nNo Second Largest Element Exist";
+	}
+	else
+	{
+		cout << "\nThe Second Largest Element is :"
+			<< second;
+	}
+}
+void kLargest(int arr[], int size, int k)
+{
+	sort(arr,arr+size,greater<int>());
+	//cout << "\n\nSecond Largest Element is :" << arr[1];
+	cout << "\nLargest " << k << " Elements are :";
+	for (int i = 0; i < k; i++)
+	{
+		cout << arr[i] << "  ";
+	}
+}
+void secondSmallest(int arr1[], int n)
+{
+	int i, first, second;
+	first = second = INT_MAX;
+	for (i = 0; i < n; i++)
+	{
+		if (arr1[i] < first)
+		{
+			second = first;
+			first = arr1[i];
+		}
+		else if (arr1[i] < second)
+		{
+			second = arr1[i];
+		}
+		
+
+	}
+	cout << "\n\n The Second Smallest Element is :" << second;
+}
+int main()
+{
+	int arr[] = { 7, 12, 9, 15, 19, 32, 56, 70 };
+	int size = sizeof(arr) / sizeof(arr[0]);
+	cout << "size is " << size;
+	cout << "\nArray Elements are : \n";
+
+	for (int i = 0; i < size; i++)
+	{
+		cout << arr[i] << "   ";
+	}
+	cout << "\nThe Largest Element Is : " << findLargest(arr, size);
+	cout << "\nThe Smallest Element Is : " << findSmallest(arr, size);
+	threeLargest(arr, size);
+	secondLargest(arr, size);
+	int k = 5;
+	kLargest(arr, size, k);
+	int arr1[] = { 5,6,7,2,3,4,12 };
+	int n = sizeof(arr1) / sizeof(arr1[0]);
+	cout << "\nsize is " << n;
+	cout << "\nArray Elements are : \n";
+
+	for (int i = 0; i < n; i++)
+	{
+		cout << arr1[i] << "   ";
+	}
+	secondSmallest(arr1, n);
+
+
+	return 0;
+}
