@@ -1,0 +1,111 @@
+#include<iostream>
+
+using namespace std;
+
+//to separate 0s and 1s from a given array of values 0 and 1.
+void divideZeroOne(int arr[], int size)
+{
+	int count = 0;
+	for (int i = 0; i < size; i++)
+	{
+		if (arr[i] == 0)
+			count++; //to store the size of 0's
+	}
+	for (int i = 0; i < count; i++)
+		arr[i] = 0;
+	for (int i = count; i < size; i++)
+		arr[i] = 1;
+	printf("\nArray After Diveded :\n");
+	for (int i = 0; i < size; i++)
+		cout << arr[i] << ",";
+}
+//to rearrange a given sorted array of positive integers
+void rearrangeMaxMin(int arr[], int size)
+{
+	int temp[100];
+	int min = 0;
+	int max = size - 1;
+	int result = true;
+	for (int i = 0; i < size; i++)
+	{
+		if (result)
+			temp[i] = arr[max--];
+		else
+			temp[i] = arr[min++];
+		result = !result;
+	}
+	for (int i = 0; i < size; i++)
+		arr[i] = temp[i];
+
+	printf("\nArray After Sorted  :\n");
+	for (int i = 0; i < size; i++)
+		cout << arr[i] << ",";
+
+}
+//to sort a given array of 0s, 1s and 2s.
+//In the final array put all 0s first, then all 1s and 
+//all 2s in last.
+void swap(int *x, int *y)
+{
+	int temp = *x;
+	*x = *y;
+	*y = temp;
+}
+void sort_012(int arr[], int size)
+{
+	int i = 0;
+	int j = size - 1;
+	int mid = 0;
+	while (mid <= j)
+	{
+		switch (arr[mid])
+		{
+		case 0:
+			swap(&arr[i++], &arr[mid++]);
+			break;
+		case 1:
+			mid++;
+			break;
+		case 2:
+			swap(&arr[mid],&arr[j--]);
+			break;
+
+		}
+	}
+	printf("\nArray After Rearrangement  :\n");
+	for (int i = 0; i < size; i++)
+		cout << arr[i] << ",";
+}
+int main()
+{
+	int arr1[] = { 0,1,0,0,1,1,1,0,1,0 };
+	int size1 = sizeof(arr1) / sizeof(arr1[0]);
+	cout << "\nOriginal Array : \n";
+	for (int i = 0; i < size1; i++)
+	{
+		cout << arr1[i] << ",";
+	}
+	divideZeroOne(arr1, size1);
+	cout << "\n---------------------------------------\n";
+	cout << "\n To Rearrange a given sorted array of positive integers";
+	int arr[] = {0,1,3,4,5,6,7,8,10};
+	int size = sizeof(arr) / sizeof(arr[0]);
+	cout << "\nOriginal Array : \n";
+	for (int i = 0; i < size; i++)
+	{
+		cout << arr[i] << ",";
+	}
+	rearrangeMaxMin(arr, size);
+	cout << "\n---------------------------------------\n";
+	cout << "\nto sort a given array of 0s, 1s and 2s.\n In the final array put all 0s first, then \nall 1s and all 2s in last.";
+	int arr2[] = { 0, 1, 2, 2, 1, 1, 0, 0, 1 };
+	int size2 = sizeof(arr2) / sizeof(arr2[0]);
+	cout << "\nOriginal Array : \n";
+	for (int i = 0; i < size2; i++)
+	{
+		cout << arr2[i] << ",";
+	}
+	sort_012(arr2, size2);
+
+	return 0;
+}
