@@ -1,1 +1,128 @@
+#include<iostream>
+using namespace std;
+//to move all negative elements of an array of 
+//integers to the end of the array without changing
+//the order of positive element and negative element.
+void positiveNegativeRearrange(int arr[], int size)
+{
+	int temp[100];
+	int j = 0;
+	for (int i = 0; i < size; i++)
+		if (arr[i] >= 0)
+			temp[j++] = arr[i];
+	if (j == size || j == 0)
+		return;
+	for (int i = 0; i < size; i++)
+		if (arr[i] < 0)
+			temp[j++] = arr[i];
+	memcpy(arr, temp, sizeof(temp));
+	cout << "\nArray Elements After Reaarrangement :";
+	for (int i = 0; i < size; i++)
+	{
+		cout << arr[i] << ",";
+	}
 
+
+}
+//to find a number which occurs odd number of times of
+//a given array of positive integers.In the said array all
+//numbers occur even number of times.
+int occurOddNum(int arr[], int size)
+{
+	for (int i = 0; i < size; i++)
+	{
+		int count = 0;
+		for (int j = 0; j < size; j++)
+		{
+			if (arr[i] == arr[j])
+				count++;
+		}
+		if (count % 2 != 0)
+			return arr[i];
+	}
+	return -1;
+}
+//to count the number of occurrences of given number 
+//in a sorted array of integers.
+int  countOccurencesNum(int arr[], int size, int value)
+{
+	int count = 0;
+	for (int i = 0; i < size; i++)
+		if (value == arr[i])
+			count++;
+		
+	return count;
+}
+//to find the two repeating elements in a given array of integers.
+void repeatElements(int arr[], int size)
+{
+	cout << "\n\n Repeating Elements are : ";
+	for (int i = 0; i < size; i++)
+		for (int j = i + 1; j < size; j++)
+			if (arr[i] == arr[j])
+				cout << arr[i]<<",";
+
+}
+//to find the missing element from two given arrays of integers except one element.
+int findMissingNum(int arr1[], int arr2[], int sz1, int sz2)
+{
+	int mn = 0;
+	for (int i = 0; i < sz1; i++)
+		mn = mn ^ arr1[i];
+	for (int i = 0; i < sz2; i++)
+		mn = mn ^ arr2[i];
+	return mn;
+}
+int main()
+{
+	/* int arr[100], size;
+	cout << "\nEnter The Size :";
+	cin >> size;
+	cout << "\nEnter The Array Elements:";
+	for (int i = 0; i < size; i++)
+	{
+		cin >> arr[i];
+	}
+	cout << "\nOriginal Array Elements Are :";
+	for (int i = 0; i < size; i++)
+	{
+		cout<< arr[i]<< " ,";
+	}
+	positiveNegativeRearrange(arr, size);
+	cout<<"\n\nNumber which Occurs ODD Number of Times :::" << occurOddNum(arr,size);
+	int value;
+	cout << "\n\nEnter The Value Here...:";
+	cin >> value;
+	cout << "\nNumber" <<value<<"which Occurs number of Times is " << countOccurencesNum(arr, size, value);
+	repeatElements(arr, size);
+	*/
+	int arr1[] = {3,1,5,7,9,10};
+	int arr2[] = { 3,7,5,9 };
+	int mn; //missing number
+	int sz1 = sizeof(arr1) / sizeof(arr1[0]);
+	int sz2 = sizeof(arr2) / sizeof(arr2[0]);
+	if (sz1 != sz2 - 1 && sz2 != sz1 - 1)
+	{
+		cout << "Invalid Input";
+		return 0;
+	}
+	cout << "Original arrays: ";
+
+	cout << "\nFirst array: ";
+	for (int i = 0; i < sz1; i++)
+		cout << arr1[i] << " ";
+
+	cout << "\nSecond array: ";
+	for (int i = 0; i < sz2; i++)
+		cout << arr2[i] << " ";
+	mn = findMissingNum(arr1, arr2, sz1, sz2);
+	cout << "\nMissing Number IS : " << mn;
+
+	
+
+
+
+
+	return 0;
+
+}
