@@ -141,7 +141,7 @@ int main()
 	//cout << "\n\nMin is  : " << minimum(arr, size);
 	//reverse(arr, size);
 	
-	//sortAscendng(arr, size);
+	sortAscendng(arr, size);
 	int k;
 	cout << "\n\nEnter Kth Element :";
 	cin >> k;
